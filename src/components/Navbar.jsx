@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
+import Button from './Button'
 function Navbar() {
+
   return (
     <>
         <div className='h-20 w-4/5  shadow-md'>
@@ -28,14 +30,10 @@ function Navbar() {
                         className={({isActive})=>`block py-2 pr-4 pl-3 ${isActive ? "text-orange-700" : "text-gray-700"} duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`                    }
                         >Services</NavLink>
                     </div>
-                    <div className='flex justify-center w-1/4 '>
-                        <button className='size text-lg font-medium	bg-gray-800 px-6 py-2 rounded-3xl	cursor-pointer text-white'>
-                            Login
-                        </button>
-                        <button className='size text-lg font-medium	bg-orange-700 px-6 py-2 mx-2 rounded-3xl cursor-pointer	 text-white'>
-                            Sign-up
-                        </button>
-                    </div>
+                    {  <div className='flex justify-center w-1/4 '>
+                        <Link to="login"><Button className='bg-gray-700 mr-1 active:bg-orange-700'>Login</Button></Link>
+                        <Link to="signup"><Button className='bg-orange-700 active:bg-gray-700'>Sign-up</Button></Link>
+                    </div>}
             </nav>
         </div>
     </>

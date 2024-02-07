@@ -7,12 +7,22 @@ import Contact from './components/Contact.jsx'
 import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Services from './components/Services.jsx'
+import Login from './components/Login.jsx'
+import Signup from './components/Signup.jsx'
 
 const router= createBrowserRouter([
   {
     path:'/',
     element: <Layout/>,
     children: [
+      {
+        path:"login",
+        element: <Login/>
+      },
+      {
+        path: "signup",
+        element: <Signup/>
+      },
       {
         path: "",
         element: <Home/>,
