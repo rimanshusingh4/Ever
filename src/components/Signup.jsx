@@ -16,6 +16,8 @@ const Signup = ()=>{
             userData.password,
             userData.name
         )
+        const verifyPromise = account.createVerification("https://localhost:5173")
+        console.log(verifyPromise);
         signPromis.then(function(res){
             console.log(res);
             if(res.status===true){
@@ -30,7 +32,6 @@ const Signup = ()=>{
             console.log(err)
         })
     }
-    
   return (
     <div className='mt-20 mb-10 w-1/3 border-8 border-orange-700 hover:bg-gray-600 rounded-full  text-center'>
         <Input onChange={(e)=> setUserData({...userData, name:e.target.value})} label="name" type='text' name='name' placeholder='Enter Full Name' className='w-3/5 border mt-6 border-gray-600 p-5 mt-3 rounded-lg'/>

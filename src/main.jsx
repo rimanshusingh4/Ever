@@ -9,6 +9,7 @@ import About from './components/About.jsx'
 import Services from './components/Services.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
+import Profile from './components/Profile.jsx'
 
 const router= createBrowserRouter([
   {
@@ -36,9 +37,9 @@ const router= createBrowserRouter([
         element: <About/>,
       },
       {
-        path: "services",
-        element: <Services/>,
-      }
+        path: "uprofile",
+        element: <Profile/>
+      },
     ]
   }
 ])

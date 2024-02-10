@@ -15,7 +15,7 @@ const Login=()=> {
             navigate("/");
         } catch (error) {
             alert("Something Wrong");
-            navigate("signup")
+            navigate("/login")
         }
     }
   return (
