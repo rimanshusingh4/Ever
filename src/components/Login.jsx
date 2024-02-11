@@ -3,6 +3,9 @@ import Input from './Input'
 import Button from './Button'
 import { useNavigate } from 'react-router-dom'
 import { account } from '../config/Auth'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login=()=> {
     const navigate = useNavigate();
@@ -14,9 +17,11 @@ const Login=()=> {
         try {
             await account.createEmailSession(userData.email, userData.password);
             navigate("/");
+            toast.success("Login Success.");
         } catch (error) {
-            alert("Something Wrong");
             navigate("/login")
+            toast.error("Something Wrong.");
+            
         }
     }
   return (

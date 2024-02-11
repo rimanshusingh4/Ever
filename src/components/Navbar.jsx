@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import svg from '../assets/profilesvg.svg'
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../redux/user/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Navbar() {
 
@@ -22,9 +24,8 @@ function Navbar() {
             
             await account.deleteSessions();
             dispatch(logout());
+            toast.success("Account Logout.")
             navigate("/login");
-            console.log(currentUser);
-            
         } catch (error) {
             console.log(error);
         }
@@ -73,8 +74,8 @@ function Navbar() {
                         <Link to="signup"><Button className='bg-orange-700 active:bg-gray-700'>Sign-up</Button></Link>
                     </div>
                 )}
+                <ToastContainer/>
             </nav>
-        // {/* </div> */}
     );
 }
 

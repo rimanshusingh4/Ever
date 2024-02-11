@@ -11,6 +11,7 @@ import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Profile from './components/Profile.jsx'
 import Verify from './components/Verify.jsx'
+import { ToastContainer } from 'react-toastify'
 
 const router= createBrowserRouter([
   {
@@ -52,5 +53,6 @@ const router= createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
+    <ToastContainer/>
   </React.StrictMode>,
 )

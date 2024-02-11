@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { account } from '../config/Auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Verify() {
     const navigate = useNavigate();
@@ -8,17 +10,22 @@ function Verify() {
     const secret = params.get("secret");
     const id = params.get("userId");
     console.log(secret);
+    const verify=null
 
-    
     async function updateVerify(){
         try {
-            const verify = account.updateVerification(id,secret)
-            alert("User Verified");
-            navigate("/login");
+            verify = await account.updateVerification(id,secret)            
         } catch (error) {
             console.log(error)
+            toast.error("Not a valid Call")
         }
     }
+    useEffect(()=>{
+      if(verify){
+        toast.success("User Verified");
+        navigate("/login");
+      }
+    })
     updateVerify();
   return (
     <>

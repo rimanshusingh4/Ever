@@ -1,10 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Login from './Login';
 import moment from 'moment';
-import Button from './Button';
-import { account } from '../config/Auth';
 
 function Profile() {
     const { currentUser } = useSelector((state) => state.user);
@@ -24,7 +21,6 @@ function Profile() {
                 <h1 className="text-3xl font-bold mb-4 flex justify-center">Hi, <p className='text-orange-700'>{currentUser.name}</p></h1>
                 <p className="text-lg">Email Id: {currentUser.email}</p>
                 <p className="text-lg">Account Verified: <span className={`font-bold ${currentUser.emailVerification ? 'text-green-500' : 'text-red-500'}`}>{currentUser.emailVerification ? 'Verified' : 'Not Verified'}</span></p>
-                {/* <Button onClick={verify} className='bg-orange-700'>Verify User</Button> */}
                 <p className="text-lg">Password Updated <u>{moment(currentUser.passwordUpdate).fromNow()}</u></p>
                 <p className="text-lg">Account Status: <span className={`font-bold ${currentUser.status ? 'text-green-500' : 'text-red-500'}`}>{currentUser.status ? 'Active' : 'Inactive'}</span></p>
             </div>

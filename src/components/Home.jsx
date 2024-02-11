@@ -10,7 +10,6 @@ function Home() {
   const dispatch=useDispatch();
   const [userInfo, setUserInfo] = useState();
   const {currentUser} = useSelector((state)=>state.user)
-  // console.log("WOW",currentUser)
   const navigate = useNavigate();
   
 
