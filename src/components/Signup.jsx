@@ -30,7 +30,7 @@ const Signup = ()=>{
         })
         const verify= async () =>{
             let session = await account.createEmailSession(userData.email,userData.password);
-            let verifyPromise = await account.createVerification("https://ever-ecru.vercel.app/Verify");
+            let verifyPromise =  account.createVerification("https://ever-ecru.vercel.app/Verify");
         }
     }
   return (

@@ -14,7 +14,6 @@ function Profile() {
         }
     },[dispatch])
 
-
     return currentUser ? (
         <div className="flex w-full justify-center mt-10 ">
             <div className="border-2 rounded-3xl p-8 text-center">
@@ -27,5 +26,4 @@ function Profile() {
         </div>
     ) : null
 }
-
 export default Profile;
