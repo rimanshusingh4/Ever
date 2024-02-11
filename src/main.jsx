@@ -10,6 +10,7 @@ import Services from './components/Services.jsx'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup.jsx'
 import Profile from './components/Profile.jsx'
+import Verify from './components/Verify.jsx'
 
 const router= createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router= createBrowserRouter([
       {
         path: "uprofile",
         element: <Profile/>
+      },
+      {
+        path: "Verify",
+        element: <Verify/>
       },
     ]
   }

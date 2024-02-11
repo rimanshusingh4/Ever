@@ -19,8 +19,9 @@ function Navbar() {
     };
     const logoutFunc= async ()=>{
         try {
-            dispatch(logout());
+            
             await account.deleteSessions();
+            dispatch(logout());
             navigate("/login");
             console.log(currentUser);
             
@@ -30,14 +31,14 @@ function Navbar() {
       }
 
     return (
-        <div className='h-20 w-4/5 shadow-md'>
-            <nav className='h-20 flex flex-wrap justify-between items-center w-full'>
-                <div className='w-1/8 ml-8'>
+        // <div className='h-20 w-4/5 shadow-md'>
+            <nav className='h-20 w-4/5 shadow-md flex flex-wrap justify-between items-center'>
+                <div className='w-auto ml-8'>
                     <Link to="/">
                         <img src="https://alexharkness.com/wp-content/uploads/2020/06/logo-2.png" alt="logo" className='h-16' />
                     </Link>
                 </div>
-                <div className='flex justify-around w-1/4 size text-lg ml-40 font-medium'>
+                <div className='flex justify-around w-1/4 size text-lg  font-medium'>
                     <NavLink
                         to=""
                         className={({ isActive }) => `block py-2 pr-4 pl-3 ${isActive ? "text-orange-700" : "text-gray-700"} duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`}
@@ -57,7 +58,7 @@ function Navbar() {
                 </div>
 
                 {currentUser ? (
-                    <div className='relative flex flex-wrap justify-end mr-8 w-1/4'>
+                    <div className='relative flex flex-wrap justify-end mr-8 w-1/8'>
                         <button onClick={toggleDropdown} className="text-gray-700 mr-4"><img src={svg} className='h-12 w-12' alt='profile svg'/></button>
                         {isDropdownOpen && (
                             <div className="absolute top-full  w-36 bg-white shadow-md py-1 rounded-xl text-center">
@@ -67,13 +68,13 @@ function Navbar() {
                         )}
                     </div>
                 ) : (
-                    <div className='flex justify-center w-1/4'>
+                    <div className='flex flex-wrap justify-center '>
                         <Link to="login"><Button className='bg-gray-700 mr-1 active:bg-orange-700'>Login</Button></Link>
                         <Link to="signup"><Button className='bg-orange-700 active:bg-gray-700'>Sign-up</Button></Link>
                     </div>
                 )}
             </nav>
-        </div>
+        // {/* </div> */}
     );
 }
 
