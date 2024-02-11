@@ -21,7 +21,6 @@ const Signup = ()=>{
             if(res.status===true){
                 toast.success("Account Created Successfully, Verification Email send to Your Email.");
                 verify();
-                navigate("")
             }
             else{
                 toast.error("There are some Problem please try Again");
