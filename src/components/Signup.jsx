@@ -4,9 +4,7 @@ import Input from './Input'
 import Button from './Button'
 import { useNavigate } from 'react-router-dom';
 import { account } from '../config/Auth';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+// function Signup() {
 const Signup = ()=>{
     const [userData, setUserData] = useState({email:"",password:"", name:""});
     const navigate = useNavigate();
@@ -18,19 +16,21 @@ const Signup = ()=>{
             userData.name
         )
         signPromis.then(function(res){
+            // console.log("Responce of signpromis",res);
             if(res.status===true){
-                toast.success("Account Created Successfully, Verification Email send to Your Email.");
+                alert("Account Created Successfully, Verification Email send to Your Email.");
                 verify();
+                // console.log("Userdata before API call",userData)
             }
             else{
-                toast.error("There are some Problem please try Again");
+                alert("There are some Problem please try Again");
             }
         },function(err){
-            console.log(err)
+            console.log(signPromis)
         })
         const verify= async () =>{
             let session = await account.createEmailSession(userData.email,userData.password);
-            let verifyPromise = await account.createVerification("https://ever-ecru.vercel.app/Verify");
+            let verifyPromise = await account.createVerification("http://localhost:5173/Verify");
         }
     }
   return (
@@ -38,6 +38,7 @@ const Signup = ()=>{
         <Input onChange={(e)=> setUserData({...userData, name:e.target.value})} label="name" type='text' name='name' placeholder='Enter Full Name' className='w-3/5 border  border-gray-600 p-5 mt-3 rounded-lg' required/>
         <Input onChange={(e)=> setUserData({...userData, email:e.target.value})} label="email" type='email' name='email' placeholder='Enter Email Id' className='w-3/5 border border-gray-600 p-5 mt-3 rounded-lg' required/>
         <Input onChange={(e)=> setUserData({...userData, password:e.target.value})} label="password" type='password' name='password' placeholder='Enter Password' className='w-3/5 border border-gray-600 p-5 mt-3 rounded-lg' required/>
+
         <Button onClick={signFunc} className='w-1/3 mb-6 bg-gray-700 hover:bg-orange-700 mt-3'>Signup</Button>
     </div>
   )
