@@ -31,10 +31,25 @@ const Signup = ()=>{
         },function(err){
             console.log(signPromis)
         })
-        const verify= async () =>{
-            let session = await account.createEmailSession(userData.email,userData.password);
-            let verifyPromise = await account.createVerification("https://ever-eight.vercel.app/Verify");
+        // const verify= async () =>{
+        //     let session = await account.createEmailSession(userData.email,userData.password);
+        //     let verifyPromise = await account.createVerification("https://ever-eight.vercel.app/Verify");
+        // }
+        const verify = async () => {
+            try {
+                // Create an email session
+                let session = await account.createEmailSession(userData.email, userData.password);
+                // Create verification with a valid URL
+                let verifyPromise = await account.createVerification("https://ever-eight.vercel.app/Verify");
+                // Handle success
+                toast.success("Account Created Successfully, Verification Email sent to Your Email.");
+            } catch (error) {
+                // Handle error
+                console.error("Verification failed:", error);
+                toast.error("Failed to create verification. Please try again.");
+            }
         }
+        
     }
   return (
     <div className='mt-20 mb-10 w-1/3 border-8 border-orange-700 hover:bg-gray-600 rounded-full  text-center'>
