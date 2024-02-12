@@ -4,6 +4,9 @@ import Input from './Input'
 import Button from './Button'
 import { useNavigate } from 'react-router-dom';
 import { account } from '../config/Auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // function Signup() {
 const Signup = ()=>{
     const [userData, setUserData] = useState({email:"",password:"", name:""});
@@ -18,19 +21,19 @@ const Signup = ()=>{
         signPromis.then(function(res){
             // console.log("Responce of signpromis",res);
             if(res.status===true){
-                alert("Account Created Successfully, Verification Email send to Your Email.");
+                toast.success("Account Created Successfully, Verification Email send to Your Email.");
                 verify();
                 // console.log("Userdata before API call",userData)
             }
             else{
-                alert("There are some Problem please try Again");
+                toast.error("There are some Problem please try Again");
             }
         },function(err){
             console.log(signPromis)
         })
         const verify= async () =>{
             let session = await account.createEmailSession(userData.email,userData.password);
-            let verifyPromise = await account.createVerification("http://localhost:5173/Verify");
+            let verifyPromise = await account.createVerification("https://ever-eight.vercel.app/Verify");
         }
     }
   return (
