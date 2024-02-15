@@ -19,9 +19,9 @@ const Signup = ()=>{
             userData.name
         )
         signPromis.then(function(res){
-            // console.log("Responce of signpromis",res);
+            console.log("Responce of signpromis",res);
             if(res.status===true){
-                toast.success("Account Created Successfully, Verification Email send to Your Email.");
+                toast.success("Account Created Successfully.");
                 verify();
                 // console.log("Userdata before API call",userData)
             }
@@ -31,18 +31,14 @@ const Signup = ()=>{
         },function(err){
             console.log(signPromis)
         })
-        // const verify= async () =>{
-        //     let session = await account.createEmailSession(userData.email,userData.password);
-        //     let verifyPromise = await account.createVerification("https://ever-eight.vercel.app/Verify");
-        // }
-        const verify = async () => {
+        const verify = async () => { 
             try {
                 // Create an email session
                 let session = await account.createEmailSession(userData.email, userData.password);
                 // Create verification with a valid URL
                 let verifyPromise = await account.createVerification("https://ever-eight.vercel.app/Verify");
                 // Handle success
-                toast.success("Account Created Successfully, Verification Email sent to Your Email.");
+                toast.success("Verification Email sent to Your Email.");
             } catch (error) {
                 // Handle error
                 console.error("Verification failed:", error);
@@ -52,10 +48,10 @@ const Signup = ()=>{
         
     }
   return (
-    <div className='mt-20 mb-10 w-1/3 border-8 border-orange-700 hover:bg-gray-600 rounded-full  text-center'>
-        <Input onChange={(e)=> setUserData({...userData, name:e.target.value})} label="name" type='text' name='name' placeholder='Enter Full Name' className='w-3/5 border  border-gray-600 p-5 mt-3 rounded-lg' required/>
-        <Input onChange={(e)=> setUserData({...userData, email:e.target.value})} label="email" type='email' name='email' placeholder='Enter Email Id' className='w-3/5 border border-gray-600 p-5 mt-3 rounded-lg' required/>
-        <Input onChange={(e)=> setUserData({...userData, password:e.target.value})} label="password" type='password' name='password' placeholder='Enter Password' className='w-3/5 border border-gray-600 p-5 mt-3 rounded-lg' required/>
+    <div className='mt-20 mb-10 w-1/3 border-8 border-orange-700 hover:bg-gray-600 rounded-3xl  text-center'>
+        <Input onChange={(e)=> setUserData({...userData, name:e.target.value})} label="name" type='text' name='name' placeholder='Enter Full Name' className='w-4/6 border  border-gray-600 p-5 mt-4 rounded-lg' required/>
+        <Input onChange={(e)=> setUserData({...userData, email:e.target.value})} label="email" type='email' name='email' placeholder='Enter Email Id' className='w-4/6 border border-gray-600 p-5 mt-3 rounded-lg' required/>
+        <Input onChange={(e)=> setUserData({...userData, password:e.target.value})} label="password" type='password' name='password' placeholder='Enter Password' className='w-4/6 border border-gray-600 p-5 mt-2 rounded-lg' required/>
 
         <Button onClick={signFunc} className='w-1/3 mb-6 bg-gray-700 hover:bg-orange-700 mt-3'>Signup</Button>
     </div>
